@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <vuestic-widget >
-        <form ref="userForm">
+        <form ref="userForm" @submit.prevent="onSave" href="/users/save">
           <div class="row">
             <div class="col-md-6">
               <fieldset>
@@ -57,9 +57,9 @@
                   <div class="input-group spec-group">
                       <vuestic-checkbox
                         label="启用"
-                        name="status"
-                        id="status"
-                        v-model="status"
+                        name="checked"
+                        id="checked"
+                        v-model="checked"
                         :isCircle="true"
                       />
                     <i class="bar"></i>
@@ -70,8 +70,8 @@
 
             <div class="row item-right">
               <div class="col-md-12 btn-right">
-                <button class="btn btn-primary btn-sm btn-margin"  @click="onSave()">保存</button>
-                <button class="btn btn-primary btn-sm btn-margin"  @click="onCancel()">取消</button>
+                <button class="btn btn-primary btn-sm btn-margin" type="submit">保存</button>
+                <button class="btn btn-primary btn-sm btn-margin"  @click.stop="onCancel()">取消</button>
               </div>
             </div>
           </div>
@@ -83,21 +83,42 @@
 </template>
 
 <script>
+import { addUser } from '../../../api/api'
+
 export default {
   name: 'UserForm',
   data () {
     return {
       account: '',
       name: '',
-      status: true,
       phone: '',
+      checked: true,
       wechatNo: '',
       qq: ''
     }
   },
+  computed: {
+    userStatus: function () {
+      return this.checked ? '1' : 0
+    },
+  },
   methods: {
     onSave (e) {
-      console.log('save')
+      let params = {
+        account: this.account,
+        name: this.name,
+        status: this.userStatus,
+        phone: this.phone,
+        wechatNo: this.wechatNo,
+        qq: this.qq
+      }
+      console.log(this.$validator)
+      addUser(params).then((res) => {
+        let data = res.data
+        if (data.success) {
+          this.onCancel()
+        }
+      })
     },
     onCancel () {
       this.$router.back()
