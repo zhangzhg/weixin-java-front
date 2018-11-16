@@ -47,6 +47,7 @@ import ItemsPerPageDef from '../common/items-per-page-definition'
 import QueryParams from './query-params'
 import { SpringSpinner } from 'epic-spinners'
 import Confirm from '../model/Confirm'
+import { delUser } from '../../api/api'
 
 export default {
   name: 'UserList',
@@ -72,7 +73,10 @@ export default {
         title: '提示：',
         content: '确定要删除？',
         success: function () {
-          console.log('hello')
+          let params = { id: row.id }
+          delUser(params).then((res) => {
+            console.log(res)
+          })
         }
       })
     },

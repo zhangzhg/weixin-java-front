@@ -40,6 +40,11 @@ const router = new Router({
           name: '用户编辑',
           path: 'user-form',
           component: lazyLoading('user/form/UserForm'),
+        },
+        {
+          name: '菜单编辑',
+          path: 'menu-list',
+          component: lazyLoading('menu/MenuList'),
         }
       ],
     },

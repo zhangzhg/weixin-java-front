@@ -22,6 +22,12 @@
           </span>
         </sidebar-link>
         <sidebar-link
+          :to="{ path: '/sys/menu-list' }">
+          <span slot="title">
+            <span>菜单管理</span>
+          </span>
+        </sidebar-link>
+        <sidebar-link
           :to="{ path: '/sys/role-list' }">
           <span slot="title">
             <span>权限管理</span>

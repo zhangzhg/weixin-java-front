@@ -41,7 +41,4 @@ export const requestLogin = params => { return axios.get(`/login`, { params: par
 
 export const addUser = params => { return axios.post(`/users/save`, params) }
 
-export const removeUser = params => { return axios.get(`/user/remove`, { params: params }) }
-
-export const batchRemoveUser = params => { return axios.get(`/user/batchremove`, { params: params }) }
-
+export const delUser = params => { return axios.post(`/users/delete`, params) }

@@ -62,6 +62,9 @@ import VuesticTimelineItem
 import VuesticPopup
   from './vuestic-components/vuestic-popup/quasar/components/popup/VuesticPopup.vue'
 
+import VInput
+  from './vuestic-components/v-input/VInput'
+
 import { installQuasarPlatform } from './vuestic-components/vuestic-popup/quasar/install'
 // At the moment we use quasar platform install to make its components work.
 // Ideally we want to create similar vuestic platform object that holds needed values.
@@ -107,7 +110,8 @@ const VuesticPlugin = {
       VuesticCollapse,
       VuesticTimeline,
       VuesticTimelineItem,
-      VuesticPopup
+      VuesticPopup,
+      VInput
     ].forEach(component => {
       Vue.component(component.name, component)
     })

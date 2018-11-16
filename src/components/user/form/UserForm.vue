@@ -112,7 +112,7 @@ export default {
         wechatNo: this.wechatNo,
         qq: this.qq
       }
-      console.log(this.$validator)
+
       addUser(params).then((res) => {
         let data = res.data
         if (data.success) {
