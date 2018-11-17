@@ -3,7 +3,7 @@
     <div class="input-group">
       <label class="form-label" :for="name">{{name| translate}} </label>
       <input :id="name" :name="name" v-bind:value="value"
-             v-on:input="$emit('input', $event.target.value)" v-validate="validate" :disabled="disabled" required/>
+             v-on:input="$emit('input', $event.target.value)" v-validate="validate" required/>
       <i class="bar"></i>
       <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
       <i class="fa fa-check valid-icon icon-right input-icon"></i>
@@ -13,7 +13,7 @@
   <div v-else class="form-group">
     <div class="input-group">
       <label class="form-label" :for="name">{{name| translate}} </label>
-      <input v-if="disabled" :id="name" :name="name" v-model="value" :disabled="disabled"/>
+      <input v-if="readonly" :id="name" :name="name" v-model="value" readonly/>
       <input v-else :id="name" :name="name" v-model="name"/>
       <i class="bar"></i>
     </div>
@@ -32,7 +32,7 @@ export default {
       type: String,
       default: ''
     },
-    disabled: {
+    readonly: {
       type: Boolean,
       default: false
     },
@@ -42,7 +42,7 @@ export default {
     },
     validate: {
       type: String,
-      default: 'required'
+      default: ''
     },
     value: {
       type: String,

@@ -6,12 +6,16 @@ import router from './router'
 import VuesticPlugin from '@/vuestic-theme/vuestic-plugin'
 import './i18n'
 import YmapPlugin from 'vue-yandex-maps'
+import ZH_CN from 'vee-validate/dist/locale/zh_CN'
 
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
 
 // NOTE: workaround for VeeValidate + vuetable-2
-Vue.use(VeeValidate, { fieldsBagName: 'formFields' })
+Vue.use(VeeValidate, {
+  fieldsBagName: 'formFields',
+  message: ZH_CN.messages
+})
 
 router.beforeEach((to, from, next) => {
   store.commit('setLoading', true)
