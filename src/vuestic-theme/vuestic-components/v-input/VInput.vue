@@ -1,7 +1,7 @@
 <template>
   <div v-if="validate" class="form-group with-icon-right" :class="{'has-error': errors.has(name)}">
     <div class="input-group">
-      <label class="form-label" :for="name">{{name| translate}} </label>
+      <label class="form-label" :for="name">{{label| translate}} </label>
       <input :id="name" :name="name" v-bind:value="value"
              v-on:input="$emit('input', $event.target.value)" v-validate="validate" required/>
       <i class="bar"></i>
@@ -12,7 +12,7 @@
   </div>
   <div v-else class="form-group">
     <div class="input-group">
-      <label class="form-label" :for="name">{{name| translate}} </label>
+      <label class="form-label" :for="name">{{label| translate}} </label>
       <input v-if="readonly" :id="name" :name="name" v-model="value" readonly/>
       <input v-else :id="name" :name="name" v-model="name"/>
       <i class="bar"></i>

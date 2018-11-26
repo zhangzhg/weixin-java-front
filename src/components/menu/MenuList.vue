@@ -2,7 +2,11 @@
   <div class="row mg">
     <div class="col-md-6">
       <vuestic-tree-root ref="treeView">
-        <v-tree :model="menu" v-for="menu in menus" :key="menu.id"/>
+        <v-tree :model="menu" v-for="menu in menus" :key="menu.id" :clickNode="nodeClick">
+          <div slot="nodeButton" class="icon" scope="props">
+            <span aria-hidden="true" @click="clickNode(props.data.model)" class="ion ion-md-image"/>
+          </div>
+        </v-tree>
       </vuestic-tree-root>
     </div>
 
@@ -10,7 +14,7 @@
       <div class="row">
         <div class="col-md-12">
           <v-input :name="name" label="名称" validate="required" v-model="name"/>
-          <v-input :name="parentId" label="上级" readonly/>
+          <v-input :name="parentId" label="上级" validate="required" readonly/>
         </div>
       </div>
     </div>
@@ -25,9 +29,7 @@ export default {
   data () {
     return {
       menus: [
-        { id: 4, name: '后台管理系统', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables' }]children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables' }] }] },
-        { id: 5, name: '菜单2' },
-        { id: 6, name: 'Keyboards' },
+        { id: 4, name: '后台管理系统', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables' }] }] }
       ],
       parentId: '',
       name: '',

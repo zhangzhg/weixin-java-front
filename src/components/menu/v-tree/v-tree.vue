@@ -7,6 +7,7 @@
       <span aria-hidden="true" class="ion ion-md-image"/>
     </div>
     {{ model.name }}
+    <slot name="nodeButton" :data="model"></slot>
   </vuestic-tree-node>
 </template>
 
@@ -22,6 +23,11 @@ export default {
       type: Object,
       default: null
     },
+  },
+  methods: {
+    clickNode (nodeData) {
+      this.$emit('clickNode', nodeData)
+    }
   }
 }
 </script>
