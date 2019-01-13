@@ -1,13 +1,14 @@
 import axios from 'axios'
+import qs from 'qs'
 
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = 'http://localhost:8080'
 
 // 请求发送拦截，把数据发送给后台之前做些什么......
 axios.interceptors.request.use((request) => {
   let obj = sessionStorage.getItem('user')
   if (obj) {
     let us = JSON.parse(obj)
-    request.url = request.url + '?token=' + us.token
+    request.url = request.url + '?access_token=' + us.token
   }
   // 再发送给后台
   return request
@@ -37,8 +38,18 @@ axios.interceptors.response.use((res) => {
 })
 export default axios
 
-export const requestLogin = params => { return axios.get(`/login`, { params: params }).then(res => res.data) }
+export const requestLogin = params => {
+  return axios.post(`/uaa/oauth/token`, qs.stringify(params), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    auth: {
+      username: 'webapp',
+      password: 'secret'
+    }
+  }).then(res => res.data)
+}
 
-export const addUser = params => { return axios.post(`/users/save`, params) }
+export const addUser = params => { return axios.post(`/users/save`, { data: params }) }
 
-export const delUser = params => { return axios.post(`/users/delete`, params) }
+export const delUser = params => { return axios.post(`/users/delete`, { data: params }) }

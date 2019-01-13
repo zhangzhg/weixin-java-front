@@ -33,24 +33,26 @@ export default {
       logining: false,
       loginForm: {
         account: 'admin',
-        password: '123456'
+        password: 'admin'
       }
     }
   },
   methods: {
     handleSubmit () {
       this.logining = true
-      let loginParams = { username: this.loginForm.account, password: this.loginForm.password }
+      let loginParams = { username: this.loginForm.account, password: this.loginForm.password, grant_type: 'password' }
       requestLogin(loginParams).then(data => {
         this.logining = false
-        let { msg, success, user, token } = data
-        if (!success) {
+        let accessToken = data.access_token
+        if (!accessToken) {
           this.$message({
-            message: msg,
+            message: '获取token失败',
             type: 'error'
           })
         } else {
-          user.token = token
+          let user = {
+            access_token: accessToken
+          }
           sessionStorage.setItem('user', JSON.stringify(user))
           this.$router.push({ path: '/admin/dashboard' })
         }

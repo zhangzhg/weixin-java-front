@@ -2,10 +2,10 @@
   <div class="row mg">
     <div class="col-md-6">
       <vuestic-tree-root ref="treeView">
-        <v-tree :model="menu" v-for="menu in menus" :key="menu.id" :clickNode="nodeClick">
-          <div slot="nodeButton" class="icon" scope="props">
-            <span aria-hidden="true" @click="clickNode(props.data.model)" class="ion ion-md-image"/>
-          </div>
+        <v-tree :model="menu" v-for="menu in menus" :key="menu.id" :parentId="-1">
+          <template slot="-1" scope="props">
+             <span aria-hidden="true" @click="nodeClick(props.data.model)" class="ion ion-md-image"/>
+          </template>
         </v-tree>
       </vuestic-tree-root>
     </div>
