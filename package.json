@@ -44,6 +44,7 @@
     "vue-bulma-expanding": "0.0.1",
     "vue-chartjs": "^3.4.0",
     "vue-color": "^2.4.6",
+    "vue-i18n": "^8.7.0",
     "vue-router": "^3.0.1",
     "vue-slider-component": "2.7.6",
     "vue-toasted": "^1.1.24",
