@@ -39,15 +39,19 @@ axios.interceptors.response.use((res) => {
 export default axios
 
 export const requestLogin = params => {
-  return axios.post(`/uaa/oauth/token`, qs.stringify(params), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    auth: {
-      username: 'webapp',
-      password: 'secret'
-    }
-  }).then(res => res.data)
+  let promise = new Promise(function (resolve, reject) {
+    resolve({ 'access_token': '123' })
+  })
+  return promise
+  // return axios.post(`/uaa/oauth/token`, qs.stringify(params), {
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   },
+  //   auth: {
+  //     username: 'webapp',
+  //     password: 'secret'
+  //   }
+  // }).then(res => res.data)
 }
 
 export const addUser = params => { return axios.post(`/users/save`, { data: params }) }

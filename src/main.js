@@ -7,7 +7,9 @@ import VuesticPlugin from '@/vuestic-theme/vuestic-plugin'
 import './i18n'
 import YmapPlugin from 'vue-yandex-maps'
 import ZH_CN from 'vee-validate/dist/locale/zh_CN'
+import ElementUi from 'element-ui'
 
+Vue.use(ElementUi)
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
 

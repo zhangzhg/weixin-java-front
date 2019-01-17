@@ -2,8 +2,7 @@
   <div v-if="validate" class="form-group with-icon-right" :class="{'has-error': errors.has(name)}">
     <div class="input-group">
       <label class="form-label" :for="name">{{label| translate}} </label>
-      <input :id="name" :name="name" v-bind:value="value"
-             v-on:input="$emit('input', $event.target.value)" v-validate="validate" required/>
+      <input :id="name" :name="name" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" v-validate="validate"/>
       <i class="bar"></i>
       <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
       <i class="fa fa-check valid-icon icon-right input-icon"></i>

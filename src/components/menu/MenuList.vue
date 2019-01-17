@@ -1,20 +1,14 @@
 <template>
   <div class="row mg">
     <div class="col-md-6">
-      <vuestic-tree-root ref="treeView">
-        <v-tree :model="menu" v-for="menu in menus" :key="menu.id" :parentId="-1">
-          <template slot="-1" scope="props">
-             <span aria-hidden="true" @click="nodeClick(props.data.model)" class="ion ion-md-image"/>
-          </template>
-        </v-tree>
-      </vuestic-tree-root>
+      <el-tree :data="menus" :props="props" show-checkbox default-expand-all ref="tree" @node-click="nodeClick"></el-tree>
     </div>
 
     <div class="col-md-6 box">
       <div class="row">
         <div class="col-md-12">
-          <v-input :name="name" label="名称" validate="required" v-model="name"/>
-          <v-input :name="parentId" label="上级" validate="required" readonly/>
+          <v-input name="name" label="名称" validate="required" v-model="form.name"/>
+          <v-input name="parentId" label="上级"  readonly/>
         </div>
       </div>
     </div>
@@ -22,22 +16,24 @@
 </template>
 
 <script>
-import VTree from './v-tree/v-tree'
+import VInput from '../../vuestic-theme/vuestic-components/v-input/VInput'
 export default {
   name: 'MenuList',
-  components: { VTree },
+  components: { VInput },
   data () {
     return {
       menus: [
-        { id: 4, name: '后台管理系统', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables', children: [{ id: 7, name: 'Cables' }, { id: 8, name: 'Cables' }] }] }
+        { id: 4, label: '后台管理系统', children: [{ id: 7, label: 'Cables' }, { id: 8, label: 'Cables', children: [{ id: 7, label: 'Cables' }, { id: 8, label: 'Cables' }] }] }
       ],
-      parentId: '',
-      name: '',
-      xx: 'xxx'
+      form: {
+        id: '',
+        name: ''
+      },
+      props: {
+        children: 'children',
+        label: 'label'
+      }
     }
-  },
-  mounted: function () {
-    this.$refs.treeView.expand()
   },
   methods: {
     nodeClick (node) {
@@ -48,16 +44,5 @@ export default {
 </script>
 
 <style scoped>
-.vuestic-tree-root{
-  background-color: white;
-}
 
-.box {
-  background-color: white;
-}
-
-.mg {
-  height: calc(100vh - 160px);
-  margin-right: 0px;
-}
 </style>
