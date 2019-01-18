@@ -6,9 +6,13 @@
 
     <div class="col-md-6 box">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <v-input name="name" label="名称" validate="required" v-model="form.name"/>
-          <v-input name="parentId" label="上级"  readonly/>
+          <v-input name="authUrl" label="权限路径" v-model="form.authUrl"/>
+        </div>
+        <div class="col-md-6">
+          <v-input name="authCode" label="编码" validate="required" v-model="form.authCode"/>
+          <v-input name="parentName" label="上级菜单" validate="required" v-model="form.parentName"/>
         </div>
       </div>
     </div>
@@ -20,19 +24,31 @@ import VInput from '../../vuestic-theme/vuestic-components/v-input/VInput'
 export default {
   name: 'MenuList',
   components: { VInput },
-  data () {
+  data: function () {
     return {
       menus: [
-        { id: 4, label: '后台管理系统', children: [{ id: 7, label: 'Cables' }, { id: 8, label: 'Cables', children: [{ id: 7, label: 'Cables' }, { id: 8, label: 'Cables' }] }] }
+        {
+          id: 4,
+          label: '后台管理系统',
+          children: [{ id: 7, label: 'Cables' }, {
+            id: 8,
+            label: 'Cables',
+            children: [{ id: 7, label: 'Cables' }, { id: 8, label: 'Cables' }],
+          }],
+        },
       ],
       form: {
         id: '',
-        name: ''
+        name: '',
+        authCode: '',
+        authUrl: '',
+        type: '1',
+        parentName: '',
       },
       props: {
         children: 'children',
-        label: 'label'
-      }
+        label: 'label',
+      },
     }
   },
   methods: {
