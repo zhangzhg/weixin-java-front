@@ -5,18 +5,8 @@
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span class="right10">{{ node.label }}</span>
           <span v-if="data.id!=1">
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => append(data)">
-              新增
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => remove(node, data)">
-              删除
-            </el-button>
+             <div class="tree-node-btn"><button type="button" @click="() => append(data)" class="btn btn-primary btn-xs-primary btn-xs">新增</button></div>
+             <div class="tree-node-btn"><button @click="() => remove(node, data)" type="button" class="btn btn-primary btn-xs-primary btn-xs">删除</button></div>
           </span>
         </span>
       </el-tree>
@@ -48,19 +38,8 @@
       <el-tree class="box" :data="roles" node-key="id" :props="treeProps" show-checkbox default-expand-all ref="tree" @node-click="nodeClick" :expand-on-click-node="false">
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span class="right10">{{ node.label }}</span>
-          <span v-if="data.id!=1">
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => append(data)">
-              新增
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => remove(node, data)">
-              删除
-            </el-button>
+          <span v-if="data.id==1" class="margin-tree-btn">
+             <button type="button" class="btn btn-primary btn-xs">保存</button>
           </span>
         </span>
       </el-tree>

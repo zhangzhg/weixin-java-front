@@ -29,7 +29,7 @@
             </template>
             <template slot="additionalTableControl">
               <div>
-                <button class="btn btn-primary btn-sm"  @click="onAddRow()">
+                <button class="btn btn-primary btn-micro"  @click="onAddRow()">
                   新增
                 </button>
               </div>

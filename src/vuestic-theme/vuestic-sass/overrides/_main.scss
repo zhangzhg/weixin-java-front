@@ -17,12 +17,38 @@
   margin-right: 30px;
 }
 
-.right10 {
-  margin-right: 10px;
+.tree-btn {
+  margin-top: 10px;
+  margin-left: 18px;
 }
 
 .box {
   padding-bottom: 10px;
   height: $body-height;
   background-color: #fff;
+}
+
+.btn-xs {
+  padding: 0.425rem 0.3rem;
+  font-size: 75%;
+  line-height: 0.15;
+  border-radius: 1.875rem;
+}
+
+.btn-xs-primary {
+  background-color: #389b5f !important;
+  box-shadow: 0 1px 1.6px 0.4px rgba(74, 227, 135, 0.5) !important;
+}
+
+.margin-tree-btn {
+  padding-left: 10px;
+  top: -2px;
+  position: relative;
+}
+
+.tree-node-btn {
+  top: -2px;
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
 }
