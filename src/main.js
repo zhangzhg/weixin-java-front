@@ -20,7 +20,8 @@ const config = {
   locale: 'zh_CN',
   dictionary: {
     zh_CN: zh
-  }
+  },
+  fieldsBagName: 'fieldBags'
 }
 Vue.use(VeeValidate, config)
 

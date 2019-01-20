@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import AppLayout from '../components/admin/AppLayout'
-import AuthLayout from '../components/auth/AuthLayout'
+import AppLayout from '../views/admin/AppLayout'
+import AuthLayout from '../views/auth/AuthLayout'
 import lazyLoading from './lazyLoading'
 
 Vue.use(Router)
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
 
   demoRoutes.push(
     VueBook(require.context('./..', true, /.demo.vue$/), '/demo'),
-    VueBook(require.context('./../components', true, /.vue$/), '/presentation'),
+    VueBook(require.context('./../views', true, /.vue$/), '/presentation'),
   )
 }
 
@@ -45,6 +45,11 @@ const router = new Router({
           name: '菜单编辑',
           path: 'menu-list',
           component: lazyLoading('menu/MenuList'),
+        },
+        {
+          name: '权限编辑',
+          path: 'role-list',
+          component: lazyLoading('role/RoleList'),
         }
       ],
     },

@@ -26,7 +26,7 @@ module.exports = {
       '@': resolve('src'),
       'src': resolve('src'),
       'assets': resolve('src/assets'),
-      'components': resolve('src/components'),
+      'views': resolve('src/views'),
       'services': resolve('src/services'),
       'directives': resolve('src/directives'),
       'vuestic-mixins': resolve('src/vuestic-theme/vuestic-mixins'),
