@@ -4,6 +4,11 @@
   margin-left: 17px;
 }
 
+.row {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
 .left10 {
   margin-left: 1px;
 }
@@ -14,4 +19,10 @@
 
 .right10 {
   margin-right: 10px;
+}
+
+.box {
+  padding-bottom: 10px;
+  height: $body-height;
+  background-color: #fff;
 }

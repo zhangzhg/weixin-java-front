@@ -1,10 +1,10 @@
 <template>
   <div class="row mg">
     <div class="col-md-6">
-      <el-tree :data="menus" node-key="id" :props="props" show-checkbox default-expand-all ref="tree" @node-click="nodeClick" :expand-on-click-node="false">
+      <el-tree class="box" :data="menus" node-key="id" :props="treeProps" show-checkbox default-expand-all ref="tree" @node-click="nodeClick" :expand-on-click-node="false">
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span class="right10">{{ node.label }}</span>
-          <span v-if="node.id!=1">
+          <span v-if="data.id!=1">
             <el-button
               type="text"
               size="mini"
@@ -57,10 +57,10 @@ export default {
         {
           id: 1,
           name: '后台管理系统',
-          children: [{ id: 7, name: 'Cables' }, {
+          children: [{ id: 7, name: '首页面板' }, {
             id: 8,
-            name: 'Cables',
-            children: [{ id: 9, name: 'Cables' }, { id: 10, name: 'Cables' }],
+            name: '系统管理',
+            children: [{ id: 9, name: '用户管理' }, { id: 10, name: '菜单管理' }],
           }],
         },
       ],
@@ -72,7 +72,7 @@ export default {
         type: '1',
         parentName: '',
       },
-      props: {
+      treeProps: {
         children: 'children',
         label: 'name',
       },

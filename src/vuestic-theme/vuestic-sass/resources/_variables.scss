@@ -172,6 +172,7 @@ $sidebar-link-active-bg: $almost-black;
 $sidebar-arrow-right: 16px;
 $sidebar-menu-item-icon-size: 19px;
 $sidebar-viewport-height: calc(100vh - #{$top-nav-height} - #{$content-wrap-pt} - #{$content-wrap-pb});
+$body-height: calc(100vh - 130px - #{$content-wrap-pt} - #{$content-wrap-pb});
 
 $sidebar-hidden-top: -150px;
 $sidebar-hidden-top-mobile: $sidebar-mobile-top;
